@@ -1,4 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreatVideoDto } from './dto/create-video.dto';
 import { Video } from './entitiese/video.entity';
 
 @Injectable()
@@ -17,14 +18,23 @@ export class VideoService {
         return movie;
     }
     //
-    createVideo(videoData){
-        this.videos.push(
-            {
-                id: this.videos[this.videos.length - 1].id + 1,
-                ...videoData
-            }
-        )
+    createVideo(videoData: CreatVideoDto) {
         
+        if (this.videos.length !== 0) {
+            
+            this.videos.push(
+                {
+                    id: this.videos[this.videos.length -1].id + 1,
+                    ...videoData
+                }
+            )
+        } else if (this.videos.length === 0) {
+            
+            this.videos.push({
+                id: 1,
+                ...videoData
+            })
+        }
     }
     
     delete(id: number): boolean {
