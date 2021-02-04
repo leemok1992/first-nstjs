@@ -24,10 +24,10 @@ export class VideoController {
 
     @Patch("/:id")
     update(@Param("id") videoId: string, @Body() updateVideoData) {
-        return {
+        return this.videoService.update(videoId,updateVideoData)
             
         }
-    }
+    
 
     @Delete("/:id")
     delete(@Param("id") videoId: string):boolean {
