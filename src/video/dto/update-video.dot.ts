@@ -1,11 +1,11 @@
 import { IsNumber, IsString } from "class-validator";
 
-export class CreatVideoDto{
+export class UpdateVideoDto{
     @IsString()
-    readonly title: string;
+    readonly title?: string;
 
     @IsNumber()
-    readonly year: number;
+    readonly year?: number;
 
     @IsString({each:true})
     readonly genres?: string[];

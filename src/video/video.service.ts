@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreatVideoDto } from './dto/create-video.dto';
+import { UpdateVideoDto } from './dto/update-video.dot';
 import { Video } from './entitiese/video.entity';
 
 @Injectable()
@@ -43,7 +44,7 @@ export class VideoService {
         return true
     }
 
-    update(id: number, updateVideoData) {
+    update(id: number, updateVideoData:UpdateVideoDto) {
         const video = this.getOneVideo(id)
         this.delete(id)
         this.videos.push({...video,...updateVideoData})
